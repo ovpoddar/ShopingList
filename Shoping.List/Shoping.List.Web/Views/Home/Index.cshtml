@@ -1,6 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model HomeViewModel
 
+<form method="post">
+    <input type="text" asp-for="Name" />
+    <button type="submit">submit</button>
+    @if (Model.Items != null)
+    {
+        @for (var i = 0; i < Model.Items.Count; i++)
+        {
+            @Html.HiddenFor(o => Model.Items[i].ItemId)
+            @Html.HiddenFor(o => Model.Items[i].ItemDescription)
+        }
+    }
+</form>
+@if (Model.Items != null)
+{
+    @foreach (var item in Model.Items)
+    {
+        <form method="post" asp-action="Delete">
+            <div>
+                <div>@item.ItemDescription</div>
+                <input type="hidden" value="@item.ItemId" name="id" />
+                <button>x</button>
+            </div>
+            @for (var i = 0; i < Model.Items.Count; i++)
+            {
+                <input type="hidden" value="@Model.Items[i].ItemId" name="i" />
+                <input type="hidden" value="@Model.Items[i].ItemDescription" name="p" />
+            }
 
-<h3> hellow world</h3>
+        </form>
+    }
+}

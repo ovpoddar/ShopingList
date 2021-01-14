@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shoping.List.Web.Handlers;
+using Shoping.List.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace Shoping.List.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IListHandler<List<ItemModel>>, ListHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
