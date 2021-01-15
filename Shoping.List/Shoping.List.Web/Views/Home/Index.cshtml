@@ -1,36 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model HomeViewModel
+@model CreateViewModel
 
 <form method="post">
     <input type="text" asp-for="Name" />
     <button type="submit">submit</button>
-    @if (Model.Items != null)
+    @for (var i = 0; i < Model.Items.Count; i++)
     {
-        @for (var i = 0; i < Model.Items.Count; i++)
-        {
-            @Html.HiddenFor(o => Model.Items[i].ItemId)
-            @Html.HiddenFor(o => Model.Items[i].ItemDescription)
-        }
+        @Html.HiddenFor(o => Model.Items[i].ItemId)
+        @Html.HiddenFor(o => Model.Items[i].ItemDescription)
     }
 </form>
-@if (Model.Items != null)
-{
+
+<form method="post" asp-action="Delete">
     @foreach (var item in Model.Items)
     {
-        <form method="post" asp-action="Delete">
-            <div>
-                <div>@item.ItemDescription</div>
-                <input type="hidden" value="@item.ItemId" name="id" />
-                <button>x</button>
-            </div>
-            @for (var i = 0; i < Model.Items.Count; i++)
-            {
-                <input type="hidden" value="@Model.Items[i].ItemId" name="i" />
-                <input type="hidden" value="@Model.Items[i].ItemDescription" name="p" />
-            }
-
-        </form>
+        <div>
+            <div>@item.ItemDescription</div>
+            <button type="submit" value="@item.ItemId" name="Id">x</button>
+        </div>
     }
-}
+
+    @for (var i = 0; i < Model.Items.Count; i++)
+    {
+        <input type="hidden" value="@Model.Items[i].ItemId" name="Items[@i].ItemId" />
+        <input type="hidden" value="@Model.Items[i].ItemDescription" name="Items[@i].ItemDescription"/>
+    }
+</form>

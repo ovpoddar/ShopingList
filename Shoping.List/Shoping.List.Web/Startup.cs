@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shoping.List.Web.Handlers;
+using Shoping.List.Web.Managers;
 using Shoping.List.Web.Models;
-using System;
+using Shoping.List.Web.VewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shoping.List.Web
 {
@@ -27,6 +25,7 @@ namespace Shoping.List.Web
         {
             services.AddControllersWithViews();
             services.AddTransient<IListHandler<List<ItemModel>>, ListHandler>();
+            services.AddTransient<IHomeManager<CreateViewModel>, HomeManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

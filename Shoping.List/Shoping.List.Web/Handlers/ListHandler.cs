@@ -1,8 +1,5 @@
 ﻿using Shoping.List.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shoping.List.Web.Handlers
 {
@@ -25,29 +22,6 @@ namespace Shoping.List.Web.Handlers
         {
             items.Remove(items.Find(e => e.ItemId == id));
             return items;
-        }
-
-
-        public List<ItemModel> Model(List<int> id, List<string> poduct)
-        {
-            if (id.Count == poduct.Count)
-            {
-                var model = new List<ItemModel>();
-                for (var i = 0; i < id.Count; i++)
-                {
-                    var m = new ItemModel
-                    {
-                        ItemId = (uint)id[i],
-                        ItemDescription = poduct[i]
-                    };
-                    model.Add(m);
-                }
-                return model;
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }

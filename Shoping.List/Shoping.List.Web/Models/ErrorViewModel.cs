@@ -1,5 +1,3 @@
-using System;
-
 namespace Shoping.List.Web.Models
 {
     public class ErrorViewModel
