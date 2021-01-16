@@ -17,6 +17,7 @@
     {
         @Html.HiddenFor(o => Model.Items[i].ItemId)
         @Html.HiddenFor(o => Model.Items[i].ItemDescription)
+        @Html.HiddenFor(o => Model.Items[i].Date)
     }
 </form>
 
@@ -25,6 +26,7 @@
     {
         <div>
             <div>@item.ItemDescription</div>
+            <div>@($"{(DateTime.Now - item.Date).Minutes} minits ago") </div>
             <button type="submit" value="@item.ItemId" name="Id">x</button>
         </div>
     }
@@ -33,5 +35,6 @@
     {
         <input type="hidden" value="@Model.Items[i].ItemId" name="Items[@i].ItemId" />
         <input type="hidden" value="@Model.Items[i].ItemDescription" name="Items[@i].ItemDescription"/>
+        <input type="hidden" value="@Model.Items[i].ItemDescription" name="Items[@i].Date"/>
     }
 </form>

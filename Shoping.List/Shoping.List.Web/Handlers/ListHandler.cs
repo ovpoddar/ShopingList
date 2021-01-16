@@ -1,4 +1,5 @@
 ﻿using Shoping.List.Web.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Shoping.List.Web.Handlers
@@ -13,7 +14,8 @@ namespace Shoping.List.Web.Handlers
             items.Add(new ItemModel
             {
                 ItemId = (uint)items.Count,
-                ItemDescription = newItem
+                ItemDescription = newItem,
+                Date = DateTime.Now
             });
             return items;
         }

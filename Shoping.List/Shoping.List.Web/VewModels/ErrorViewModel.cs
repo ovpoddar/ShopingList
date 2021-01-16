@@ -1,4 +1,4 @@
-namespace Shoping.List.Web.Models
+namespace Shoping.List.Web.VewModels
 {
     public class ErrorViewModel
     {
