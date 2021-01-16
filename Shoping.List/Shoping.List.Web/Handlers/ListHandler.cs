@@ -18,10 +18,20 @@ namespace Shoping.List.Web.Handlers
             return items;
         }
 
-        public List<ItemModel> DeleteItem(List<ItemModel> items, uint id)
+        public ResultModel<List<ItemModel>> DeleteItem(List<ItemModel> items, uint id)
         {
-            items.Remove(items.Find(e => e.ItemId == id));
-            return items;
+            var success = items.Remove(items.Find(e => e.ItemId == id));
+            if (success)
+                return new ResultModel<List<ItemModel>>()
+                {
+                    ErrMessage = "No Err Found",
+                    Result = items
+                };
+            return new ResultModel<List<ItemModel>>()
+            {
+                Result = items,
+                ErrMessage = "the product is not exist anymore"
+            };
         }
     }
 }

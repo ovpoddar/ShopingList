@@ -1,8 +1,10 @@
-﻿namespace Shoping.List.Web.Handlers
+﻿using Shoping.List.Web.Models;
+
+namespace Shoping.List.Web.Handlers
 {
     public interface IListHandler<T>
     {
         T AddItem(T items, string newItem);
-        T DeleteItem(T items, uint id);
+        ResultModel<T> DeleteItem(T items, uint id);
     }
 }

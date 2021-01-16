@@ -4,7 +4,8 @@ namespace Shoping.List.Web.Managers
 {
     public interface IHomeManager<T>
     {
-        T CreateGetRequest();
+        T CreateGetRequest { get; }
+
         T CreatePostRequest(T model);
         T RemovePostRequest(RemoveViewModel model);
     }

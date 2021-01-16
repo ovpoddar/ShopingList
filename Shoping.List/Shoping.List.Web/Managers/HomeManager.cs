@@ -15,13 +15,11 @@ namespace Shoping.List.Web.Managers
             _handler = handler ?? throw new ArgumentNullException(nameof(_handler));
         }
 
-        public CreateViewModel CreateGetRequest()
-        {
-            return new CreateViewModel
+        public CreateViewModel CreateGetRequest =>
+            new CreateViewModel
             {
                 Items = new List<ItemModel>()
             };
-        }
 
         public CreateViewModel CreatePostRequest(CreateViewModel model)
         {
@@ -34,9 +32,11 @@ namespace Shoping.List.Web.Managers
 
         public CreateViewModel RemovePostRequest(RemoveViewModel model)
         {
+            var result = _handler.DeleteItem(model.Items, (uint)model.Id);
             return new CreateViewModel
             {
-                Items = _handler.DeleteItem(model.Items, (uint)model.Id)
+                Items = result.Result,
+                ErrMessage = result.ErrMessage
             };
         }
     }

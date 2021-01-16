@@ -3,6 +3,13 @@
 }
 @model CreateViewModel
 
+@{ 
+    if(Model.ErrMessage != null)
+    {
+        <div><label asp-for="ErrMessage"></label></div>
+    }
+}
+
 <form method="post">
     <input type="text" asp-for="Name" />
     <button type="submit">submit</button>

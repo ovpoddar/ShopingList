@@ -17,7 +17,7 @@ namespace Shoping.List.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var model = _manager.CreateGetRequest();
+            var model = _manager.CreateGetRequest;
             return View(model);
         }
         [HttpPost]
